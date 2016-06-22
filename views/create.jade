@@ -1,0 +1,31 @@
+extends layout
+block content
+    form.form-horizontal(action='/create' style='margin-top:130px; width: 50%; margin-left: 350px; background-color: lavender; padding:20px' method='post')
+      .form-group
+        label.col-sm-2.control-label(for='inputEmail3') Fullname
+        .col-sm-10
+          input#inputEmail3.form-control(type='text', placeholder='Fullname', name='name')
+      .form-group
+        label.col-sm-2.control-label(for='inputEmail3') Birthday
+        .col-sm-10
+          input#inputEmail3.form-control(type='datetime', placeholder='Birthday', name='birthday')
+      .form-group
+        label.col-sm-2.control-label(for='inputEmail3') Email
+        .col-sm-10
+          input#inputEmail3.form-control(type='email', placeholder='Email', name='email')
+      .form-group
+        label.col-sm-2.control-label(for='inputPassword3') Password
+        .col-sm-10
+          input#inputPassword3.form-control(type='password', placeholder='Password', name='password')
+      .form-group
+        label.col-sm-2.control-label(for='inputPassword3') Confirm password
+        .col-sm-10
+          input#inputPassword3.form-control(type='password', placeholder='Confirm password', name='confirmPass')
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          button.btn.btn-primary(type='submit') Create
+          a(href='/showLogin')
+            button.btn.btn-default(type='button' style='margin-left:10px') Cancel
+    form(style='margin-left:500px; width: 300px; margin-top:20px')
+        include messages
+          

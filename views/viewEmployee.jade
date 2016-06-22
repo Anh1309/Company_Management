@@ -1,0 +1,48 @@
+extends layout
+block content
+    include header
+    .col-sm-2
+        ul.nav.nav-pills.nav-stacked(style='background-color:#F8F8FF; margin-top:20px')
+            ul.nav.nav-pills.nav-stacked.nav-pills-stacked-example
+                li(role='presentation')
+                    a(href='/home') Home
+                li.active(role='presentation')
+                    a(href='/employee') Employee management
+                li(role='presentation')
+                    a(href='/department') Department management
+                li(role='presentation')
+                    a(href='/user') User
+    .col-sm-10
+        h2 EMPLOYEE MANAGEMENT
+        ol.breadcrumb(style='margin-top:25px')
+            li
+                a(href='/home') Home
+            li
+                a(href='/employee') Employee management
+            li.active Employee detail
+        form#viewEmployee.form.form-inline(action='/viewEmployee/#{employee._id}')
+            | Fullname: #{employee.employeename}
+            br
+            br
+            | Gender: #{employee.gender}
+            br
+            br
+            | Position: #{employee.position}
+            br
+            br
+            if employee.depart_id
+                | Department: #{employee.depart_id.name}
+            else
+                | Department: None
+            br
+            br
+            | Email: #{employee.email}
+            br
+            br
+            form
+                a(href='/deleteEmployee/#{employee._id}' style='margin-right:10px')
+                    button#btn.btn.btn-default(type='button') Delete
+                a(href='/showEditEmployee/#{employee._id}')
+                    button#btn.btn.btn-success(type='button') Edit
+            
+

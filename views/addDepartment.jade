@@ -1,0 +1,37 @@
+extends layout
+block content
+    include header
+    .col-sm-2
+        ul.nav.nav-pills.nav-stacked(style='background-color:#F8F8FF; margin-top:20px')
+            ul.nav.nav-pills.nav-stacked.nav-pills-stacked-example
+                li(role='presentation')
+                    a(href='/home') Home
+                li(role='presentation')
+                    a(href='/employee') Employee management
+                li.active(role='presentation')
+                    a(href='/department') Department management
+                li(role='presentation')
+                    a(href='/user') User
+    .col-sm-10
+        h2 DEPARTMENT MANAGEMENT
+        ol.breadcrumb(style='margin-top:25px')
+            li
+                a(href='/home') Home
+            li
+                a(href='/department') Department management
+            li.active Add department
+        form(style='width:300px')
+            include messages
+        form#addDepartment.form.form-inline(action='/addDepartment' method='post')
+            | Name: 
+            br
+            input#inputDepartmentName.form-control(type='text', name='name', style='width: 300px')
+            br
+            | Description: 
+            br
+            textarea.form-control(rows='3' name='description' style='width: 300px')
+            br
+            button.btn.btn-success(type='submit' style='margin-top:10px; margin-right:10px') Submit
+            a(href='/department')
+                button.btn.btn-default(type='button' style='margin-top:10px') Cancel
+

@@ -1,0 +1,41 @@
+extends layout
+block content
+    include header
+    .col-sm-2
+        ul.nav.nav-pills.nav-stacked(style='background-color:#F8F8FF; margin-top:20px')
+            ul.nav.nav-pills.nav-stacked.nav-pills-stacked-example
+                li(role='presentation')
+                    a(href='/home') Home
+                li.active(role='presentation')
+                    a(href='/employee') Employee management
+                li(role='presentation')
+                    a(href='/department') Department management
+                li(role='presentation')
+                    a(href='/user') User
+    .col-sm-10
+        h2 EMPLOYEE MANAGEMENT
+        ol.breadcrumb(style='margin-top:25px')
+            li
+                a(href='/home') Home
+            li.active Employee management
+        form#employee.form.form-inline(action='/searchEmployee' method='post')
+            a(href='/showAddEmployee')
+                button#btn.btn.btn-success(type="button" style='margin-bottom:10px') Add employee  
+            input#inputEmployee.form-control(type='text', name='searchEmployee', style='margin-bottom:10px;margin-left: 665px')
+            button#btn.btn.btn-success(type="submit" style='margin-bottom:10px;margin-left: 10px') Search employee 
+        table.table.table-striped
+            tr
+                th(width='10%') STT
+                th(width='80%') Name
+                th
+            each employee,i in employeelist
+                tr
+                    td=(i+1)
+                    td=employee.employeename
+                    td
+                        a(href='/viewEmployee/#{employee._id}')
+                            button#btn.glyphicon.glyphicon-comment(type='button')
+                        a(href='/deleteEmployee/#{employee._id}')
+                            button#btn.glyphicon.glyphicon-trash(type='button')
+                        a(href='/showEditEmployee/#{employee._id}')
+                            button#btn.glyphicon.glyphicon-pencil(type='button')

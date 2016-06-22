@@ -1,0 +1,24 @@
+extends layout
+block content
+    form.form-horizontal(action='/login' style='margin-top:150px; width: 40%; margin-left: 400px; background-color: lavender; padding:20px' method='post')
+      .form-group
+        label.col-sm-2.control-label(for='inputEmail3') Email
+        .col-sm-10
+          input#inputEmail3.form-control(type='email', placeholder='Email', name='email')
+      .form-group
+        label.col-sm-2.control-label(for='inputPassword3') Password
+        .col-sm-10
+          input#inputPassword3.form-control(type='password', placeholder='Password', name='password')
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          .checkbox
+            label
+              input(type='checkbox')
+              |  Remember me
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          button.btn.btn-default(type='submit') Sign in
+          a(href='/showCreate')
+            button.btn.btn-primary(type='button' style='margin-left:10px') Create account
+    form(style='margin-left:500px; width: 300px; margin-top:20px')
+        include messages

@@ -1,0 +1,36 @@
+extends layout
+block content
+    include header
+    .col-sm-2
+        ul.nav.nav-pills.nav-stacked(style='background-color:#F8F8FF; margin-top:20px')
+            ul.nav.nav-pills.nav-stacked.nav-pills-stacked-example
+                li(role='presentation')
+                    a(href='/home') Home
+                li(role='presentation')
+                    a(href='/employee') Employee management
+                li(role='presentation')
+                    a(href='/department') Department management
+                li.active(role='presentation')
+                    a(href='/user') User
+    .col-sm-10
+        h2 ACCOUNT
+        ol.breadcrumb(style='margin-top:25px')
+            li
+                a(href='/home') Home
+            li
+                a(href='/user') User
+            li.active Change password
+        form(style='margin-bottom:20px; width: 300px')
+            include messages
+        form#changePass.form.form-inline(action='/changePass' method='post')
+            | Account: #{login.email}
+            br
+            br 
+            | New password:
+            input#newPass.form-control(type='password', name='newPass', style='width: 200px; margin-right: 20px; margin-left:10px')
+            | Confirm password:
+            input#confirmPass.form-control(type='password', name='confirmPass', style='width: 200px; margin-left:10px')
+            button.btn.btn-success(type='submit' style='margin-left:20px') Change
+            
+           
+        

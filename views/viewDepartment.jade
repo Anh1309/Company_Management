@@ -1,0 +1,55 @@
+extends layout
+block content
+    include header
+    .col-sm-2
+        ul.nav.nav-pills.nav-stacked(style='background-color:#F8F8FF; margin-top:20px')
+            ul.nav.nav-pills.nav-stacked.nav-pills-stacked-example
+                li(role='presentation')
+                    a(href='/home') Home
+                li(role='presentation')
+                    a(href='/employee') Employee management
+                li.active(role='presentation')
+                    a(href='/department') Department management
+                li(role='presentation')
+                    a(href='/user') User
+    .col-sm-10
+        h2 EMPLOYEE MANAGEMENT
+        ol.breadcrumb(style='margin-top:25px')
+            li
+                a(href='/home') Home
+            li
+                a(href='/department') Department management
+            li.active Department detail
+        form#viewDepartment.form.form-inline(action='/viewDepartment/#{department._id}')
+            | Name: #{department.name}
+            br
+            br
+            | Description: #{department.description}
+            br
+            br
+            | EMPLOYEE LIST
+            br
+            table.table.table-striped(style='margin-top:15px')
+                tr
+                    th(width='10%') STT
+                    th Name
+                    //th
+                each employee,i in employeelist
+                    tr
+                        td=(i+1)
+                        td=employee.employeename
+            br
+            br
+            form
+                a(href='/deleteDepartment/#{department._id}' style='margin-right:10px')
+                    button#btn.btn.btn-default(type='button') Delete
+                a(href='/showEditDepartment/#{department._id}')
+                    button#btn.btn.btn-success(type='button') Edit
+//                        td
+//                            a(href='/viewEmployee/#{employee._id}')
+//                                button#btn.glyphicon.glyphicon-comment(type='button')
+//                            a(href='/deleteEmployee/#{employee._id}')
+//                                button#btn.glyphicon.glyphicon-trash(type='button')
+//                            a(href='/showEditEmployee/#{employee._id}')
+//                                button#btn.glyphicon.glyphicon-pencil(type='button')
+

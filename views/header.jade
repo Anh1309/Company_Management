@@ -1,0 +1,13 @@
+nav.navbar.navbar-inverse
+        a.navbar-brand(href='#') Brand
+        a.navbar-brand(href='#') Home
+        a.navbar-brand(href='#') Link
+        a.navbar-brand(href='#') Link
+        if login
+            form#logout.form.form-inline(action='/logout' method='post' style='margin-left:1100px; margin-top:7px')
+                span.label.label-default #{login.email}
+                button#btn.btn.btn-default(type="submit" style='margin-left: 10px') Logout
+        else
+            a(href='/showLogin')
+                button#btn.btn.btn-default(type="submit" style='margin-left: 1000px; margin-top: 7px') Login
+            

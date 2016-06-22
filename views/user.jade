@@ -1,0 +1,27 @@
+extends layout
+block content
+    include header
+    .col-sm-2
+        ul.nav.nav-pills.nav-stacked(style='background-color:#F8F8FF; margin-top:20px')
+            ul.nav.nav-pills.nav-stacked.nav-pills-stacked-example
+                li(role='presentation')
+                    a(href='/home') Home
+                li(role='presentation')
+                    a(href='/employee') Employee management
+                li(role='presentation')
+                    a(href='/department') Department management
+                li.active(role='presentation')
+                    a(href='/user') User
+    .col-sm-10
+        h2 ACCOUNT
+        ol.breadcrumb(style='margin-top:25px')
+            li
+                a(href='/home') Home
+            li.active User
+        form#user.form.form-inline(action='/user')
+            | Account: #{login.email}
+            br
+            br
+            a(href='/showChangePass') Change password
+           
+        

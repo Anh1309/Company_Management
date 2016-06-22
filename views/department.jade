@@ -1,0 +1,41 @@
+extends layout
+block content
+    include header
+    .col-sm-2
+        ul.nav.nav-pills.nav-stacked(style='background-color:#F8F8FF; margin-top:20px')
+            ul.nav.nav-pills.nav-stacked.nav-pills-stacked-example
+                li(role='presentation')
+                    a(href='/home') Home
+                li(role='presentation')
+                    a(href='/employee') Employee management
+                li.active(role='presentation')
+                    a(href='/department') Department management
+                li(role='presentation')
+                    a(href='/user') User
+    .col-sm-10
+        h2 DEPARTMENT MANAGEMENT
+        ol.breadcrumb(style='margin-top:25px')
+            li
+                a(href='/home') Home
+            li.active Department management
+        form#department.form.form-inline(action='/searchDepartment' method='post')
+            a(href='/showAddDepartment')
+                button#btn.btn.btn-success(type="button" style='margin-bottom:10px') Add department 
+            input#inputEmployee.form-control(type='text', name='searchDepartment', style='margin-bottom:10px;margin-left: 645px')
+            button#btn.btn.btn-success(type="submit" style='margin-bottom:10px;margin-left: 10px') Search department 
+        table.table.table-striped
+            tr
+                th(width='10%') STT
+                th(width='80%') Name
+                th
+            each department,i in departmentlist
+                tr
+                    td=(i+1)
+                    td=department.name
+                    td
+                        a(href='/viewDepartment/#{department._id}')
+                            button#btn.glyphicon.glyphicon-comment(type='button')
+                        a(href='/deleteDepartment/#{department._id}')
+                            button#btn.glyphicon.glyphicon-trash(type='button')
+                        a(href='/showEditDepartment/#{department._id}')
+                            button#btn.glyphicon.glyphicon-pencil(type='button')
